@@ -96,8 +96,6 @@ This steps taken in Data Preparation:
 ## Modeling
 In this section, several machine learning models are used to predict building heating and cooling loads based on building parameters. The following are the selected models, their reasons for selection, advantages and disadvantages, and hyperparameter tuning steps.
 
-### Models UsedLuas Permukaan uses multiple decision trees to make predictions. This algorithm is suitable for data that has non-linearity.
-
 **Pros:**
 - Good at handling datasets with many features and non-linear interactions.
 - Relatively resistant to overfitting on large datasets.
