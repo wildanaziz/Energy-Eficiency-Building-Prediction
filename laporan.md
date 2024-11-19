@@ -1,5 +1,6 @@
 # Energy Efficiency on Building - Wildan Aziz Hidayat
-![Energy Efficiency Poster](images/1_Waste-Energy.png)
+![1_Waste-Energy](https://github.com/user-attachments/assets/fbdd2882-956b-42e6-ab03-526439e95a7b)
+
 ## Domain Proyek
 
 Pada bagian ini, kami akan membahas latar belakang terkait efisiensi energi pada bangunan. Penelitian ini bertujuan untuk menilai kebutuhan beban pemanasan dan pendinginan bangunan sebagai fungsi dari parameter bangunan yang berbeda. Efisiensi energi sangat penting untuk mengurangi konsumsi energi dan biaya operasional, serta mengurangi dampak lingkungan.
@@ -11,7 +12,7 @@ b. Random Forest
 c. XGBoost Regressor
 
 - Memilih model dengan error terkecil untuk digunakan dalam memprediksi efisiensi bangunan yang muncul
-- Contoh referensi terkait: [Predictive Modelling for Heating and Cooling Load Systems of Residential Building](https://ieeexplore.ieee.org/document/10234992) 
+- Contoh referensi terkait: ![Predictive Modelling for Heating and Cooling Load Systems of Residential Building](https://ieeexplore.ieee.org/document/10234992) 
 
 ## Business Understanding
 Seperti yang telah dijelaskan sebelumnya, terkadang bangunan seperti rumah tinggal dapat mempengaruhi lingkungan. Penggunaan model pembelajaran mesin regresi dapat membantu memprediksi energi bangunan yang lebih efisien untuk mengurangi dampak lingkungan. Bagian ini bertujuan untuk menjelaskan masalah bisnis dan tujuan yang ingin dicapai melalui proyek ini.
@@ -35,7 +36,7 @@ Seperti yang telah dijelaskan sebelumnya, terkadang bangunan seperti rumah tingg
 
 ## Data Understanding
 
-Dataset yang digunakan dalam proyek ini diperoleh dari [UCI Machine Learning Repository] (https://archive.ics.uci.edu/ml/datasets/Energy+efficiency). Dataset ini berisi parameter bangunan yang terkait dengan efisiensi energi.
+Dataset yang digunakan dalam proyek ini diperoleh dari ![UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Energy+efficiency). Dataset ini berisi parameter bangunan yang terkait dengan efisiensi energi.
 
 ### Variabel-variabel yang terdapat pada Dataset
 Berikut ini adalah variabel-variabel yang terdapat di dalam dataset beserta deskripsinya:
@@ -60,11 +61,11 @@ Dataset ini berisi 720 sampel
 | 2 | Wall_Area   | 720 non-null       | float64
 | 3 | Roof_Area   | 720 non-null       | float64
 | 4 | Overall_Height   | 720 non-null       | float64
-| 5 | Orientation   | 720 non-null       | float64
+| 5 | Orientation   | 720 non-null       | int64
 | 6 | Glazing_Area   | 720 non-null       | float64
-| 7 | Glazing_Area_Distribution   | 720 non-null       | float64
+| 7 | Glazing_Area_Distribution   | 720 non-null       | int64
 | 8 | Heating Load   | 720 non-null       | float64
-| 8 | Cooling Load   | 720 non-null       | float64
+| 9 | Cooling Load   | 720 non-null       | float64
 
 
 Informasi missing value
@@ -88,7 +89,8 @@ Dalam beberapa kasus, nilai 0 akan dianggap sebagai *nilai yang hilang*.
 ### Data Visualization
 - Univariate Analysis
 
-![univar_analysis](images/Univar.png)
+![Univar](https://github.com/user-attachments/assets/6c0b8566-a99a-490e-8cfb-92793b426ba5)
+
 Figure 1. Univariate Analysis
 
 Dari hasil analisis univariat pada dataset, terlihat bahwa kedua variabel target, yaitu Heating Load dan Cooling Load, memiliki distribusi data yang bervariasi. Heating Load cenderung tersebar dalam rentang 10 hingga 40, dengan pola distribusi yang relatif merata, menunjukkan adanya variasi yang signifikan antar sampel. 
@@ -98,7 +100,7 @@ Sementara itu, Cooling Load memiliki rentang antara 15 hingga 45 dengan distribu
 Secara keseluruhan, karakteristik dataset ini menunjukkan bahwa ada kemungkinan hubungan non-linear antara beberapa fitur dan target, sehingga analisis lanjutan seperti korelasi atau analisis feature importance diperlukan untuk menentukan pengaruh masing-masing fitur terhadap Heating Load dan Cooling Load.
 
 - Multivariate Analysis
-![Correlation_Matrix](images/corr.png)
+![corr](https://github.com/user-attachments/assets/cc82b1fc-fecb-4de1-b00e-d1cb4ac429b1)
 Figure 2. Correlation Matrix
 
 Dari correlation matrix yang ditampilkan, dapat disimpulkan bahwa Heating Load memiliki korelasi positif yang sangat kuat dengan Overall Height (nilai korelasi sebesar 0.91). Ini menunjukkan bahwa semakin tinggi bangunan, semakin besar kemungkinan nilai Heating Load akan meningkat. Selain itu, terdapat korelasi positif sedang dengan Relative Compactness (0.64) dan korelasi negatif yang cukup kuat dengan Roof Area (-0.88) dan Surface Area (-0.68). Hal ini menunjukkan bahwa luas atap dan permukaan yang lebih besar cenderung berhubungan dengan penurunan Heating Load.
@@ -191,7 +193,8 @@ Hasil ini menunjukkan bahwa XGBoost memberikan kinerja generalisasi terbaik di a
 RMSE mengukur kesalahan dengan mengkuadratkan perbedaan antara nilai sebenarnya (`y_true`) dan nilai prediksi (`y_pred`), rata-rata perbedaan kuadrat ini, dan kemudian mengambil akar kuadrat.
 Rumus untuk RMSE adalah:
 
-![RMSE Metrik](images/RMSE%20Metrics.png)
+<img width="450" alt="RMSE Metrics" src="https://github.com/user-attachments/assets/5c1ea65a-f121-4be4-aaf9-31c10a0eaf2b">
+
 Di mana:  
 -  RMSE**: Kesalahan Rata-rata Kuadrat Akar (Root Mean Squared Error)  
 - **y**: Nilai aktual  
@@ -211,7 +214,8 @@ Tabel di bawah ini menunjukkan loss untuk setiap model:
 
 Plot di bawah ini menunjukkan loss untuk setiap model:
 
-![Plot](images/bar_train_test.png)
+![bar_train_test](https://github.com/user-attachments/assets/a41334ba-83a1-42a6-8358-16f6b81d0bd6)
+
 
 Tabel di bawah ini menunjukkan hasil prediksi untuk setiap model:
 
@@ -243,4 +247,4 @@ Model lain, seperti Random Forest, juga menghasilkan kesalahan yang relatif rend
 Proyek ini berhasil memenuhi tujuannya untuk memprediksi beban pemanasan dan beban pendinginan menggunakan model pembelajaran mesin. Namun, penyetelan hiperparameter lebih lanjut dari XGBRegressor dapat mengurangi kesalahan lebih banyak lagi, memastikan keandalan yang lebih besar dalam prediksi.
 
 # References
-##### [1] Sharad Kumar Tiwari, Jaskirat Kaur, Ramanpreet Kaur, "Predictive Modelling for Heating and Cooling Load Systems of Residential Building", 2024 https://ieeexplore.ieee.org/document/10503016/authors#authors
+##### S. K. Tiwari, J. Kaur, dan R. Kaur, "Predictive Modelling for Heating and Cooling Load Systems of Residential Building," 2024. [Online]. Tersedia: https://ieeexplore.ieee.org/document/10503016/authors#authors.
