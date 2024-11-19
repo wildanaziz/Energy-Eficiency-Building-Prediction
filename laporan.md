@@ -47,16 +47,40 @@ Berikut ini adalah variabel-variabel yang terdapat di dalam dataset beserta desk
 - **X6**: Orientation - Orientasi bangunan
 - **X7**: Glazing Area - Luas Distribusi
 - **X8**: Glazing Area Distribution - Distribusi area kaca
-- **Y1**: Heating Load - Beban pemanasan (target)
-- **Y2**: Cooling Load - Beban pendinginan (target)
+- **Y1**: Heating Load - Beban pemanasan. Ini sebagai target dataset
+- **Y2**: Cooling Load - Beban pendinginan. Ini sebagai target dataset
 
 ### Data Information ###
 Dataset ini berisi 720 sampel
-![Gambar Info Energi](images/DataFrame%20Info.png)
 
-Hapus Nilai yang Hilang
+| # | Column     | Non-Null Count | Dtype  
+|---|------------|----------------|---------
+| 0 | Relative_Compactness   | 720 non-null       | float64
+| 1 | Surface Area   | 720 non-null       | float64
+| 2 | Wall_Area   | 720 non-null       | float64
+| 3 | Roof_Area   | 720 non-null       | float64
+| 4 | Overall_Height   | 720 non-null       | float64
+| 5 | Orientation   | 720 non-null       | float64
+| 6 | Glazing_Area   | 720 non-null       | float64
+| 7 | Glazing_Area_Distribution   | 720 non-null       | float64
+| 8 | Heating Load   | 720 non-null       | float64
+| 8 | Cooling Load   | 720 non-null       | float64
 
-![Gambar Info Energi](images/Miss.png)
+
+Informasi missing value
+
+| # | Column     | Missing Value 
+|---|------------|----------------
+| 0 | Relative_Compactness   | 0 
+| 1 | Surface Area   | 0 
+| 2 | Wall_Area   | 0 
+| 3 | Roof_Area   | 0 
+| 4 | Overall_Height   | 0 
+| 5 | Orientation   | 0 
+| 6 | Glazing_Area   | 48 
+| 7 | Glazing_Area_Distribution   | 48 
+| 8 | Heating Load   | 0 
+| 8 | Cooling Load   | 0 
 
 Pada beberapa komponen seperti *Area Kaca*, *Distribusi Area Kaca*, memiliki nilai 0.
 Dalam beberapa kasus, nilai 0 akan dianggap sebagai *nilai yang hilang*.
@@ -73,6 +97,7 @@ Sementara itu, Cooling Load memiliki rentang antara 15 hingga 45 dengan distribu
 
 Secara keseluruhan, karakteristik dataset ini menunjukkan bahwa ada kemungkinan hubungan non-linear antara beberapa fitur dan target, sehingga analisis lanjutan seperti korelasi atau analisis feature importance diperlukan untuk menentukan pengaruh masing-masing fitur terhadap Heating Load dan Cooling Load.
 
+- Multivariate Analysis
 ![Correlation_Matrix](images/corr.png)
 Figure 2. Correlation Matrix
 
@@ -87,9 +112,10 @@ Kesimpulannya, fitur yang paling berpengaruh terhadap Heating Load adalah Overal
 Langkah-langkah persiapan data dilakukan untuk memastikan dataset bersih, konsisten, dan cocok untuk melatih model machine learning.
 Langkah-langkah ini dilakukan dalam Persiapan Data:
 
-- **Data Cleaning:** Nilai yang hilang ditangani dengan memperhitungkannya dengan mean atau median untuk mencegah hilangnya data, sementara outlier dikelola menggunakan metode seperti pembatasan atau penghapusan untuk meningkatkan ketahanan model. Dalam proyek ini kami menggunakan Metode IQR dengan menghapus outlier 1,5 IQR di bawah Q1 dan 1,5 IQR di atas Q3.
-- **Feature Scaling:** Sementara Random Forest dan XGBRegressor adalah model berbasis pohon yang tidak sensitif terhadap penskalaan fitur, KNN membutuhkan normalisasi atau standarisasi untuk memastikan semua fitur berkontribusi secara merata pada perhitungan jarak.
+- **Pengecekan Missing Value:** Pada data yang dilampirkan bahwa terdapat beberapa kolom yang mengandung nilai 0 seperti *Glazing Area* dan *Glazing Area Distribution*. Biasanya nilai 0 ini mengandung dianggap sebagai nilai yang hilang.
+- **Data Cleaning dan Handling Outliers:** Nilai yang hilang ditangani dengan memperhitungkannya dengan mean atau median untuk mencegah hilangnya data, sementara outlier dikelola menggunakan metode seperti pembatasan atau penghapusan untuk meningkatkan ketahanan model. Dalam proyek ini kami menggunakan Metode IQR dengan menghapus outlier 1,5 IQR di bawah Q1 dan 1,5 IQR di atas Q3.
 - **Data Splitting:** Dataset dibagi menjadi set pelatihan dan set pengujian (pembagian 80:20) untuk menilai kemampuan generalisasi model dan menghindari overfitting.
+- **Feature Scaling:** Sementara Random Forest dan XGBRegressor adalah model berbasis pohon yang tidak sensitif terhadap penskalaan fitur, KNN membutuhkan normalisasi atau standarisasi untuk memastikan semua fitur berkontribusi secara merata pada perhitungan jarak.
 
 ## Modelling
 Pada bagian ini, beberapa model pembelajaran mesin digunakan untuk memprediksi beban pemanasan dan pendinginan gedung berdasarkan parameter gedung. Berikut ini adalah model-model yang dipilih, alasan pemilihannya, kelebihan dan kekurangannya, serta langkah-langkah penyetelan hiperparameter.
