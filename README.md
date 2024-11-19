@@ -1,5 +1,4 @@
-# Energy Efficiency on Building - Wildan Aziz Hidayat
-
+# Energy Efficiency on Building - Wildan Aziz Hida![Energy Efficiency Poster](images/1_Waste-Energy.png)
 ## Project Domain
 
 In this section, we will discuss the background related to energy efficiency in buildings. This study aims to assess the heating and cooling load requirements of buildings as a function of different building parameters. Energy efficiency is essential to reduce energy consumption and operating costs, as well as to reduce environmental impacts.
